@@ -1,51 +1,7 @@
-
-
-/*$bp-md: 600px;
-$bp-lg: 800px;
-
-:root {
-  --d: 700ms;
-  --e: cubic-bezier(0.19, 1, 0.22, 1);
-  --font-sans: 'Rubik', sans-serif;
-  --font-serif: 'Cardo', serif;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  height: 100%;
-}
-
-body {
-  display: grid;
-  place-items: center;
-}
-
-.page-content {
-  display: grid;
-  grid-gap: 1rem;
-  padding: 1rem;
-  max-width: 1024px;
-  margin: 0 auto;
-  font-family: var(--font-sans);
-  
-  @media (min-width: $bp-md) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  @media (min-width: $bp-lg) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-} */
-
-:root {
-    --d: 700ms;
-    --e: cubic-bezier(0.19, 1, 0.22, 1);
-    --font-sans: 'Rubik', sans-serif;
-    --font-serif: 'Cardo', serif;
-  }
+@d: 700ms;
+@e: cubic-bezier(0.19, 1, 0.22, 1);
+@font-sans: 'Rubik', sans-serif;
+@font-serif: 'Cardo', serif;
 
 .card {  
   position: relative;
@@ -53,7 +9,9 @@ body {
   align-items: flex-end;
   overflow: hidden;
   padding: 1rem;
-  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   text-align: center;
   color: whitesmoke;
   background-color: whitesmoke;
@@ -76,7 +34,7 @@ body {
     height: 110%;
     background-size: cover;
     background-position: 0 0;
-    transition: transform calc(var(--d) * 1.5) var(--e);
+    transition: transform calc(@d * 1.5) @e;
     pointer-events: none;
   }
   
@@ -109,7 +67,7 @@ body {
       hsla(0, 0%, 0%, 0.790) 100%
     );
     transform: translateY(-50%);
-    transition: transform calc(var(--d) * 2) var(--e);
+    transition: transform calc(@d * 2) @e;
   }
 }
 
@@ -120,7 +78,7 @@ body {
   align-items: center;
   width: 100%;
   padding: 1rem;
-  transition: transform var(--d) var(--e);
+  transition: transform @d @e;
   z-index: 1;
   
   > * + * {
@@ -135,7 +93,7 @@ body {
 }
 
 .copy {
-  font-family: var(--font-serif);
+  font-family: @font-serif;
   font-size: 1.125rem;
   font-style: italic;
   line-height: 1.35;
@@ -175,8 +133,8 @@ body {
       opacity: 0;
       transform: translateY(1rem);
       transition:
-        transform var(--d) var(--e),
-        opacity var(--d) var(--e);
+        transform @d @e,
+        opacity @d @e;
     }
   }
   
@@ -193,7 +151,7 @@ body {
       > *:not(.title) {
         opacity: 1;
         transform: translateY(0);
-        transition-delay: calc(var(--d) / 8);
+        transition-delay: calc(@d / 8);
       }
     }
   }
